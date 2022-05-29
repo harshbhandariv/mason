@@ -57,7 +57,8 @@ class Edge<T> {
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Edge other = (Edge) obj;
+    @SuppressWarnings("unchecked")
+    Edge<T> other = (Edge<T>) obj;
     if (vertex1 == null) {
       if (other.vertex1 != null)
         return false;

@@ -134,7 +134,7 @@ public class AllCyclesInDirectedGraphJohnson {
     return blockedMap.computeIfAbsent(v, (key) -> new HashSet<>());
   }
 
-  private Graph createSubGraph(long startVertex, Graph<Integer> graph) {
+  private Graph<Integer> createSubGraph(long startVertex, Graph<Integer> graph) {
     Graph<Integer> subGraph = new Graph<>(true);
     for (Edge<Integer> edge : graph.getAllEdges()) {
       if (edge.getVertex1().getId() >= startVertex && edge.getVertex2().getId() >= startVertex) {

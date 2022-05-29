@@ -3,17 +3,21 @@ package graph;
 import java.util.*;
 
 public class NonTouchingLoops {
-  public ArrayList<ArrayList<ArrayList<ArrayList<Vertex<Integer>>>>> nonTouchingLoops;
+  public List<List<List<List<Vertex<Integer>>>>> nonTouchingLoops;
+  public List<List<Vertex<Integer>>> forwardPaths;
   List<List<Vertex<Integer>>> allCycles;
   int noOfLoops;
+  int noOfForwardPaths;
 
-  public NonTouchingLoops(List<List<Vertex<Integer>>> allCycles) {
+  public NonTouchingLoops(List<List<Vertex<Integer>>> forwardPaths, List<List<Vertex<Integer>>> allCycles) {
     this.allCycles = new ArrayList<>(allCycles);
     this.noOfLoops = this.allCycles.size();
     this.nonTouchingLoops = new ArrayList<>();
     for (int i = 0; i < noOfLoops - 1; i++) {
       this.nonTouchingLoops.add(new ArrayList<>());
     }
+    this.forwardPaths = forwardPaths;
+    this.noOfForwardPaths = forwardPaths.size();
   }
 
   private void helper(List<int[]> combinations, int data[], int start, int end, int index) {
@@ -44,7 +48,7 @@ public class NonTouchingLoops {
         }
       }
     }
-    ArrayList<ArrayList<Vertex<Integer>>> loopPairs = new ArrayList<>();
+    List<List<Vertex<Integer>>> loopPairs = new ArrayList<>();
     for (int loopIndex : combination) {
       loopPairs.add(new ArrayList<>(allCycles.get(loopIndex)));
     }
@@ -54,8 +58,6 @@ public class NonTouchingLoops {
   public void computeNonTouchingLoops() {
     for (int i = 2; i <= noOfLoops; i++) {
       List<int[]> combinations = generate(noOfLoops, i);
-      if (combinations.size() == 0)
-        break;
       for (int[] combination : combinations) {
         checkNonTouching(combination, i);
       }

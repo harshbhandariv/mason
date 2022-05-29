@@ -36,9 +36,9 @@ public class App {
           AllCyclesInDirectedGraphJohnson johnson = new AllCyclesInDirectedGraphJohnson();
           List<List<Vertex<Integer>>> forwardPaths = graph.getAllForwardPaths(sourceNode, destinationNode);
           List<List<Vertex<Integer>>> allCycles = johnson.simpleCyles(graph);
-          NonTouchingLoops loops = new NonTouchingLoops(allCycles);
+          NonTouchingLoops loops = new NonTouchingLoops(forwardPaths, allCycles);
           loops.computeNonTouchingLoops();
-          ArrayList<ArrayList<ArrayList<ArrayList<Vertex<Integer>>>>> nonTouchingLoops = loops.nonTouchingLoops;
+          List<List<List<List<Vertex<Integer>>>>> nonTouchingLoops = loops.nonTouchingLoops;
           System.out.println("Number of Nodes = " + numberOfNodes);
           System.out.println("Source Node: " + sourceNode + ", Destination Node: " + destinationNode);
           System.out.println("Number of Edges: " + numberOfEdges);
@@ -50,10 +50,10 @@ public class App {
           System.out.println(allCycles);
           System.out.println("Non Touching Loops: ");
           i = 2;
-          for (ArrayList<ArrayList<ArrayList<Vertex<Integer>>>> aList : nonTouchingLoops) {
+          for (List<List<List<Vertex<Integer>>>> aList : nonTouchingLoops) {
             if (aList.size() == 0)
               break;
-            System.out.println(i++ + " Non touching loops");
+            System.out.println("Set of " + i++ + " Non touching loops");
             System.out.println(aList);
           }
         }
