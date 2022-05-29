@@ -98,10 +98,8 @@ public class AllCyclesInDirectedGraphJohnson {
       // Store contents of stack in final result.
       if (neighbor == startVertex) {
         List<Vertex<Integer>> cycle = new ArrayList<>();
-        stack.push(startVertex);
         cycle.addAll(stack);
         Collections.reverse(cycle);
-        stack.pop();
         allCycles.add(cycle);
         foundCycle = true;
       } // explore this neighbor only if it is not in blockedSet.
@@ -145,32 +143,4 @@ public class AllCyclesInDirectedGraphJohnson {
     }
     return subGraph;
   }
-
-  public static void main(String args[]) {
-    AllCyclesInDirectedGraphJohnson johnson = new AllCyclesInDirectedGraphJohnson();
-    Graph<Integer> graph = new Graph<>(true);
-    graph.addEdge(1, 2);
-    graph.addEdge(1, 8);
-    graph.addEdge(1, 5);
-    graph.addEdge(2, 9);
-    graph.addEdge(2, 7);
-    graph.addEdge(2, 3);
-    graph.addEdge(3, 1);
-    graph.addEdge(3, 2);
-    graph.addEdge(3, 6);
-    graph.addEdge(3, 4);
-    graph.addEdge(6, 4);
-    graph.addEdge(4, 5);
-    graph.addEdge(5, 2);
-    graph.addEdge(8, 9);
-    graph.addEdge(9, 8);
-
-    List<List<Vertex<Integer>>> allCycles = johnson.simpleCyles(graph);
-    allCycles.forEach(cycle -> {
-      StringJoiner joiner = new StringJoiner("->");
-      cycle.forEach(vertex -> joiner.add(String.valueOf(vertex.getId())));
-      System.out.println(joiner);
-    });
-  }
-
 }

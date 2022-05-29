@@ -99,27 +99,4 @@ public class TarjanStronglyConnectedComponent {
       result.add(stronglyConnectedComponenet);
     }
   }
-
-  public static void main(String args[]) {
-    Graph<Integer> graph = new Graph<>(true);
-    graph.addEdge(1, 2);
-    graph.addEdge(2, 3);
-    graph.addEdge(3, 1);
-    graph.addEdge(3, 4);
-    graph.addEdge(4, 5);
-    graph.addEdge(5, 6);
-    graph.addEdge(6, 4);
-    graph.addEdge(7, 6);
-    graph.addEdge(7, 8);
-    graph.addEdge(8, 7);
-
-    TarjanStronglyConnectedComponent tarjanStronglyConnectedComponent = new TarjanStronglyConnectedComponent();
-    List<Set<Vertex<Integer>>> result = tarjanStronglyConnectedComponent.scc(graph);
-
-    result.forEach(scc -> {
-      scc.forEach(vertex -> System.out.print(vertex + " "));
-      System.out.println();
-    });
-
-  }
 }

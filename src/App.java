@@ -3,6 +3,7 @@ import java.util.*;
 
 import graph.AllCyclesInDirectedGraphJohnson;
 import graph.Graph;
+import graph.NonTouchingLoops;
 import graph.Vertex;
 
 public class App {
@@ -33,8 +34,11 @@ public class App {
             i++;
           }
           AllCyclesInDirectedGraphJohnson johnson = new AllCyclesInDirectedGraphJohnson();
-          List<List<Vertex<Integer>>> allCycles = johnson.simpleCyles(graph);
           List<List<Vertex<Integer>>> forwardPaths = graph.getAllForwardPaths(sourceNode, destinationNode);
+          List<List<Vertex<Integer>>> allCycles = johnson.simpleCyles(graph);
+          NonTouchingLoops loops = new NonTouchingLoops(allCycles);
+          loops.computeNonTouchingLoops();
+          ArrayList<ArrayList<ArrayList<ArrayList<Vertex<Integer>>>>> nonTouchingLoops = loops.nonTouchingLoops;
           System.out.println("Number of Nodes = " + numberOfNodes);
           System.out.println("Source Node: " + sourceNode + ", Destination Node: " + destinationNode);
           System.out.println("Number of Edges: " + numberOfEdges);
@@ -44,6 +48,14 @@ public class App {
           System.out.println(forwardPaths);
           System.out.println("Loops: ");
           System.out.println(allCycles);
+          System.out.println("Non Touching Loops: ");
+          i = 2;
+          for (ArrayList<ArrayList<ArrayList<Vertex<Integer>>>> aList : nonTouchingLoops) {
+            if (aList.size() == 0)
+              break;
+            System.out.println(i++ + " Non touching loops");
+            System.out.println(aList);
+          }
         }
       } catch (FileNotFoundException e) {
         System.out.println(e.getMessage());
