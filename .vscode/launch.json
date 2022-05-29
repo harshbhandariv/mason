@@ -6,19 +6,6 @@
   "configurations": [
     {
       "type": "java",
-      "name": "Launch AllCyclesInDirectedGraphJohnson",
-      "request": "launch",
-      "mainClass": "graph.AllCyclesInDirectedGraphJohnson",
-      "projectName": "mason_gain_calculator_29d65b40"
-    },
-    {
-      "type": "java",
-      "name": "Launch Current File",
-      "request": "launch",
-      "mainClass": "App"
-    },
-    {
-      "type": "java",
       "name": "Launch App",
       "request": "launch",
       "mainClass": "App",

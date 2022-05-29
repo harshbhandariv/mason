@@ -54,6 +54,8 @@ public class NonTouchingLoops {
   public void computeNonTouchingLoops() {
     for (int i = 2; i <= noOfLoops; i++) {
       List<int[]> combinations = generate(noOfLoops, i);
+      if (combinations.size() == 0)
+        break;
       for (int[] combination : combinations) {
         checkNonTouching(combination, i);
       }
