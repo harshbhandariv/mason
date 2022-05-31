@@ -1,4 +1,4 @@
-# Mason's gain formula calculator
+# Mason's gain formula helper
 
 ## Getting Started
 
